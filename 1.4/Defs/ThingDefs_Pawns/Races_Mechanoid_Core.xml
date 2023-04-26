@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SpaceshipLeaving</defName>
+    <label>drop pod (leaving)</label>
+    <thingClass>RimSpace.SpaceshipLeaving</thingClass>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>1.9</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(2, 2)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+	
+
+
+
+
+
+  <ThingDef Name="BaseVessel" Abstract="True">
+    <thingClass>Pawn</thingClass>
+    <category>Pawn</category>
+    <selectable>true</selectable>
+    <containedPawnsSelectable>true</containedPawnsSelectable>
+    <containedItemsSelectable>true</containedItemsSelectable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <hasTooltip>true</hasTooltip>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <statBases>
+      <Mass>6000</Mass>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <inspectorTabs>
+      <li>ITab_Pawn_Health</li>
+      <li>ITab_Pawn_Needs</li>
+      <li>ITab_Pawn_Character</li>
+      <li>ITab_Pawn_Training</li>
+      <li>ITab_Pawn_Social</li>
+      <li>ITab_Pawn_Guest</li>
+      <li>ITab_Pawn_Prisoner</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">ITab_Pawn_Slave</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ITab_Pawn_Feeding</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ITab_Genes</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ITab_GenesPregnancy</li>
+      <li>ITab_Pawn_FormingCaravan</li>
+      <li>ITab_Pawn_Gear</li>
+      <li>ITab_Pawn_Log</li>
+	  <li>RimSpace.ITab_ContentsCrewLarge</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompAttachBase</compClass>
+      </li>
+    </comps>
+    <drawGUIOverlay>true</drawGUIOverlay>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="BaseVessel" Name="BaseSpaceship" Abstract="True">
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <statBases>
+      <MarketValue>1200</MarketValue>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+      <ToxicResistance>1</ToxicResistance>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-250</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+      <ArmorRating_Heat>2.00</ArmorRating_Heat>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
+      <MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech">0.33</MechEnergyLossPerHP>
+      <WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech">5</WastepacksPerRecharge>
+      <WorkSpeedGlobal MayRequire="Ludeon.Rimworld.Biotech">0.5</WorkSpeedGlobal>
+    </statBases>
+    <receivesSignals>true</receivesSignals>
+    <tradeability>None</tradeability>
+    <race>
+      <fleshType>Mechanoid</fleshType>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+      <lifeExpectancy>2500</lifeExpectancy>
+      <bloodDef>Filth_MachineBits</bloodDef>
+      <nameGenerator MayRequire="Ludeon.RimWorld.Biotech">NamerMech</nameGenerator>
+      <soundCallIntervalRange>1000~2000</soundCallIntervalRange>
+      <soundCallIntervalFriendlyFactor>2</soundCallIntervalFriendlyFactor>
+      <thinkTreeConstant MayRequire="Ludeon.RimWorld.Biotech">MechConstant</thinkTreeConstant>
+    </race>
+    <comps>
+
+	  <li Class="RimSpace.CompProperties_Spacer"/>
+	  <li Class="RimSpace.CompProperties_Spaceship">
+			<ReadyTicks>60</ReadyTicks>
+			<EjectLabel>Dump it</EjectLabel>
+			<EjectDesc>Dump Crew Now</EjectDesc>
+			<CrewSize>2</CrewSize>
+
+	  </li>
+		<!--li Class="RimSpace.CompProperties_LaunchShip">
+		
+		<skyfallerLeaving>SpaceshipLeaving</skyfallerLeaving>
+		</li-->
+      <li MayRequire="Ludeon.Rimworld.Biotech" Class="CompProperties_OverseerSubject">
+        <needsOverseerEffect>MechUncontrolled</needsOverseerEffect>
+        <delayUntilFeralCheck>60000</delayUntilFeralCheck>
+        <feralMtbDays>10</feralMtbDays>
+        <feralCascadeRadialDistance>25</feralCascadeRadialDistance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <PawnKindDef Name="BaseSpaceshipKind" Abstract="True">
+    <defaultFactionType>PlayerColony</defaultFactionType>
+    <aiAvoidCover>true</aiAvoidCover>
+    <destroyGearOnDrop>false</destroyGearOnDrop>
+    <canStrip>false</canStrip>
+    <minGenerationAge MayRequire="Ludeon.Rimworld.Biotech">200</minGenerationAge>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+  </PawnKindDef>
+
+   <JobDef>
+    <defName>EnterCrew</defName>
+    <driverClass>RimSpace.JobDriver_EnterCrew</driverClass>
+    <reportString>entering cryptosleep casket.</reportString>
+    <taleOnCompletion>EnteredCryptosleep</taleOnCompletion>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+
+
+    <ThingDef Name="LightSpaceship" ParentName="BaseSpaceship" Abstract="True">
+      <statBases>
+        <MarketValue>800</MarketValue>
+        <MoveSpeed>3.4</MoveSpeed>
+        <ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+        <ArmorRating_Sharp>0.20</ArmorRating_Sharp>
+        <MechEnergyLossPerHP>0.66</MechEnergyLossPerHP>
+      </statBases>
+      <race>
+        <body>AstroMech_Light</body>
+        <intelligence>ToolUser</intelligence>
+        <thinkTreeMain>AstroMechanoid</thinkTreeMain>
+        <baseBodySize>0.7</baseBodySize>
+        <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+        <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding</soundMeleeHitBuilding>
+        <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+        <mechWeightClass>Light</mechWeightClass>
+      </race>
+      <butcherProducts>
+        <Steel>1000</Steel>
+      </butcherProducts>
+      <tools>
+        <li>
+          <label>Ram</label>
+          <capacities>
+            <li>Blunt</li>
+          </capacities>
+          <power>6</power>
+          <cooldownTime>2.6</cooldownTime>
+          <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+          <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        </li>
+      </tools>
+    </ThingDef>
+
+    <PawnKindDef Name="LightSpaceshipKind" ParentName="BaseSpaceshipKind" Abstract="True">
+      <weaponMoney>9999~9999</weaponMoney>
+      <combatPower>10</combatPower>
+      <weaponTags></weaponTags>
+      <techHediffsChance>1</techHediffsChance>
+      <techHediffsMoney>9999~9999</techHediffsMoney>
+      <controlGroupPortraitZoom>1.8</controlGroupPortraitZoom>
+	  <initialResistanceRange>90~100</initialResistanceRange>
+	  <initialWillRange>90~100</initialWillRange>
+    </PawnKindDef>
+
+    <PawnKindDef Name="NonCombatLightSpaceshipKind" ParentName="LightSpaceshipKind" Abstract="True">
+      <isFighter>false</isFighter>
+    </PawnKindDef>
+
+
+
+
+   <ThingDef ParentName="LightSpaceship">
+      <defName>AstroMech_Fighter</defName>
+      <label>fighter</label>
+      <description>A small mechanoid designed for hauling. Lacking a ranged weapon, it can make only weak melee attacks.</description>
+      <statBases>
+        <MoveSpeed>5</MoveSpeed>
+      </statBases>
+      <race>
+        <mechEnabledWorkTypes>
+          <li>Hauling</li>
+        </mechEnabledWorkTypes>
+        <lifeStageAges>
+          <li>
+            <def>MechanoidFullyFormed</def>
+            <minAge>0</minAge>
+            <soundWounded>Pawn_Mech_Lifter_Wounded</soundWounded>
+            <soundDeath>Pawn_Mech_Lifter_Death</soundDeath>
+            <soundCall>Pawn_Mech_Lifter_Call</soundCall>
+          </li>
+          <li>
+            <def>MechanoidFullyFormed</def>
+            <minAge>100</minAge>
+            <soundWounded>Pawn_Mech_Lifter_Wounded</soundWounded>
+            <soundDeath>Pawn_Mech_Lifter_Death</soundDeath>
+            <soundCall>Pawn_Mech_Lifter_Call</soundCall>
+          </li>
+        </lifeStageAges>
+      </race>
+    </ThingDef>
+    
+    <PawnKindDef ParentName="NonCombatLightSpaceshipKind">
+      <defName>AstroMech_Fighter</defName>
+      <label>fighter</label>
+      <race>AstroMech_Fighter</race>
+      <lifeStages>
+        <li>
+          <bodyGraphicData>
+            <texPath>Ships/3</texPath>
+            <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Liftman</maskPath>
+            <shaderType>CutoutWithOverlay</shaderType>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>1.1</drawSize>
+          </bodyGraphicData>
+        </li>
+        <li>
+          <bodyGraphicData>
+            <texPath>Ships/4</texPath>
+            <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Liftman</maskPath>
+            <shaderType>CutoutWithOverlay</shaderType>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>1.1</drawSize>
+          </bodyGraphicData>
+        </li>
+      </lifeStages>
+    </PawnKindDef>
+
+
+
+</Defs>

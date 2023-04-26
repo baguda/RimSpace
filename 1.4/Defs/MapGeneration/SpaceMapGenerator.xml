@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--MapGeneratorDef Name="SpaceMapCommonBase" Abstract="True"-->
+  <MapGeneratorDef>
+	<defName>SpaceMapGen</defName>
+    <genSteps>
+	  <li>ElevationFertility</li>
+      <li>Caves</li>
+      <li>Terrain</li>
+      
+      <li>FindPlayerStartSpot</li>
+      <li>ScenParts</li>
+      <li>Fog</li>
+	  <li>StarSystem</li>
+
+    </genSteps>
+  </MapGeneratorDef>
+
+ 
+  
+    <GenStepDef>
+    <defName>StarSystem</defName>
+    <order>210</order>
+    <genStep Class="RimSpace.GenStep_StarSystem"/>
+  </GenStepDef>
+
+
+
+</Defs>

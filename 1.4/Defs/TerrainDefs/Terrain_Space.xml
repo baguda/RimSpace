@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainAffordanceDef>
+    <defName>Space</defName>
+    <label>space</label>
+    <order>3500</order>
+    <visualizeOnAffordanceOverlay>true</visualizeOnAffordanceOverlay>
+    <affordanceOverlayColor>(10,10,10)</affordanceOverlayColor>
+  </TerrainAffordanceDef>
+
+
+  
+  <TerrainDef Name="SpaceBase" Abstract="True">
+	<takeFootprints>false</takeFootprints>
+	 <fertility>0.00</fertility>
+    <edgeType>FadeRough</edgeType>
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <natural>true</natural>
+    <pollutionOverlayTexturePath>Terrain/Surfaces/PollutionSoil</pollutionOverlayTexturePath>
+    <pollutionColor>(1, 1, 1, 0.43)</pollutionColor>
+    <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
+	<pathCost>14</pathCost>
+    <statBases>
+      <Beauty>3</Beauty>
+      <BeautyOutdoors>0</BeautyOutdoors>
+    </statBases>
+    <!--scatterType>SoftGray</scatterType-->
+    <affordances>
+      <li>Space</li>
+    </affordances>
+    <pollutedTexturePath>Terrain/Surfaces/IcePolluted</pollutedTexturePath>
+    <!--pollutionOverlayTexturePath>Terrain/Surfaces/PollutionIce</pollutionOverlayTexturePath>
+	      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+    <pollutionColor>(1, 0, 0, 1)</pollutionColor-->
+    <pollutionCloudColor>(1, 0, 0, 0.66)</pollutionCloudColor>
+  </TerrainDef>
+  
+
+  <TerrainDef Name="SP1" ParentName="SpaceBase">
+    <defName>SpaceTerrain</defName>
+    <label>Space</label>
+    <texturePath>Terrain/SP4</texturePath>
+    <renderPrecedence>50</renderPrecedence>
+  </TerrainDef>
+  
+  
+ <TerrainDef ParentName="SP1">
+    <defName>SpaceTerrainA</defName>
+    <label>Ice</label>
+    <texturePath>Terrain/Space11</texturePath>
+    <renderPrecedence>51</renderPrecedence>
+  </TerrainDef>
+  
+  
+   <TerrainDef ParentName="SpaceBase">
+    <defName>SpaceTerrainB</defName>
+    <label>Ice</label>
+    <texturePath>Terrain/Space12</texturePath>
+    <renderPrecedence>52</renderPrecedence>
+  </TerrainDef>
+</Defs>

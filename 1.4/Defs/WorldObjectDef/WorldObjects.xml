@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  
+
+  
+  <WorldObjectDef>
+    <defName>OrbitalLocation</defName>
+    <label>Space</label>
+    <description>A Region of Space</description>
+    <worldObjectClass>RimSpace.WorldObject_Orbital</worldObjectClass>
+    <texture>WorldObjects/SpaceRegion</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>WorldObjects/SpaceRegion</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+	<mapGenerator>SpaceMapGen</mapGenerator>
+    <comps>
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_TimedDetectionRaids" />
+    </comps>
+  </WorldObjectDef>
+  
+
+  <WorldObjectDef>
+    <defName>TravelingSpaceShip</defName>
+    <label>Space ship</label>
+    <description>Spaceship in flight.</description>
+    <worldObjectClass>RimSpace.WorldObject_Vessel</worldObjectClass>
+    <texture>World/WorldObjects/TravelingTransportPods</texture>
+    <useDynamicDrawer>true</useDynamicDrawer>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/Expanding/TravelingTransportPods</expandingIconTexture>
+    <expandingIconPriority>60</expandingIconPriority>
+    <expandMore>true</expandMore>
+    <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>
+  </WorldObjectDef>
+
+
+
+
+
+</Defs>

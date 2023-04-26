@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  
+  <ThingDef Name="SpaceObjectBase" Abstract="True">
+    <category>Building</category>
+    <drawerType>MapMeshOnly</drawerType>
+    <filthLeaving>Filth_RubbleRock</filthLeaving>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <building>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+	<minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <selectable>false</selectable>
+    <fillPercent>1</fillPercent>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(255,255,255,0)</glowColor>
+      </li>
+		<li Class="RimSpace.CompProperties_Spacer"/>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetHome</defName>
+    <label>Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL1</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	<size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+
+  </ThingDef>
+  
+    <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetLush</defName>
+    <label>Lush Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL2</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+    <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetFirtile</defName>
+    <label>Firtile Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL4</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+
+    <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetWilderness</defName>
+    <label>Wilderness Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL10</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+    <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetJovial</defName>
+    <label>Jovial Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL11</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+  
+      <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimPlanetFrozen</defName>
+    <label>Frozen Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>Space/PL12</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(4,4)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+
+  <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimMoon</defName>
+    <label>Rim World</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(2,2)</drawSize>
+		<texPath>Space/PL5</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(2,2)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+ 
+
+  <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimSun</defName>
+    <label>System Star</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(20,20)</drawSize>
+		<texPath>Space/ST2</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+	    <size>(20,20)</size>
+    <thingCategories>
+		<li>BuildingsSpecial</li>
+  </thingCategories>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+
+  </ThingDef>
+
+
+
+
+
+
+
+<ThingDef ParentName="BuildingBase">
+    <defName>SpaceshipLauncher</defName>
+    <label>launcher</label>
+    <description>A fueling port for launching one transport pod. Pod launchers can launch as a group - but the launchers must be placed adjacent to each other.</description>
+    <thingClass>Building_PodLauncher</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Misc/PodLauncher</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5,5)</drawSize>
+    </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <size>(1,2)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1.0</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <uiOrder>2200</uiOrder>
+    <canOverlapZones>false</canOverlapZones>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <building>
+      <hasFuelingPort>true</hasFuelingPort>
+    </building>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>3000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>150.0</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>75</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+    </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_FuelingPort</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <researchPrerequisites>
+      <li>TransportPod</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <uiIconScale>0.9</uiIconScale>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>TransportSpaceship</defName>
+    <label>pod</label>
+    <description>A launchable sub-orbital cargo pod capable of carrying people, items, or animals. Can be used for sending gifts, transporting people or supplies, surprise attacks, or reinforcing battles.</description>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <designationHotKey>Misc12</designationHotKey>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <uiOrder>2200</uiOrder>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>1600</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.8</restEffectiveness>
+		<massCapacity>5000</massCapacity>
+      </li>
+      <li Class="RimSpace.CompProperties_LaunchShip">
+        <skyfallerLeaving>DropPodLeaving</skyfallerLeaving>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NeedsFuelingPort</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>TransportPod</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <uiIconScale>0.65</uiIconScale>
+  </ThingDef>
+
+
+
+</Defs>

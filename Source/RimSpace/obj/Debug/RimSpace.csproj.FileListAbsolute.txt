@@ -1,0 +1,4 @@
+B:\SteamLibrary\steamapps\common\RimWorld\Mods\RimSpace\1.4\Assemblies\RimSpace.dll
+B:\SteamLibrary\steamapps\common\RimWorld\Mods\RimSpace\Source\RimSpace\obj\Debug\RimSpace.csprojAssemblyReference.cache
+B:\SteamLibrary\steamapps\common\RimWorld\Mods\RimSpace\Source\RimSpace\obj\Debug\RimSpace.csproj.CoreCompileInputs.cache
+B:\SteamLibrary\steamapps\common\RimWorld\Mods\RimSpace\Source\RimSpace\obj\Debug\RimSpace.dll
