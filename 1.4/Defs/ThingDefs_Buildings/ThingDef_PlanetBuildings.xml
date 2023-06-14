@@ -9,11 +9,13 @@
     <scatterableOnMapGen>false</scatterableOnMapGen>
     <building>
       <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+	  <claimable>false</claimable>
+	  <deconstructible>false</deconstructible>
     </building>
-	<minifiedDef>MinifiedThing</minifiedDef>
+	<!--minifiedDef>MinifiedThing</minifiedDef-->
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-    <selectable>false</selectable>
+    <selectable>true</selectable>
     <fillPercent>1</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <rotatable>false</rotatable>
@@ -23,6 +25,7 @@
         <glowColor>(255,255,255,0)</glowColor>
       </li>
 		<li Class="RimSpace.CompProperties_Spacer"/>
+		<li Class="RimSpace.CompProperties_Trader"/>
     </comps>
   </ThingDef>
 
@@ -45,15 +48,17 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	<size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-    </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+        <isHome>true</isHome>
+      </li>
+    </comps>
 
 
   </ThingDef>
@@ -77,22 +82,25 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <BiomeDefName>Tundra</BiomeDefName>
+      </li>
+    </comps>
   </ThingDef>
 
     <ThingDef ParentName="SpaceObjectBase">
-    <defName>RimPlanetFirtile</defName>
-    <label>Firtile Rim World</label>
-    <description>A small planet on the rim of the core systems</description>
+    <defName>MidWorld</defName>
+    <label>Mid World</label>
+    <description>World whose people have mastered flight, but not cheap interplanetary travel. Similar to Earth in the 21st century.</description>
     <thingClass>Building</thingClass>
 	<graphicData>
 		<drawSize>(5,5)</drawSize>
@@ -108,23 +116,32 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <BiomeDefName>Tundra</BiomeDefName>
+	  <Tempureture>18</Tempureture>
+	  <Rainfall>10</Rainfall>
+	  <Swampiness>0.10</Swampiness>
+	  <Elevation>1</Elevation>
+	  <Hilliness>SmallHills</Hilliness>
+	  <GroundMapGeneratorDefName>Base_Planet</GroundMapGeneratorDefName>
+      </li>
+    </comps>
   </ThingDef>
 
 
     <ThingDef ParentName="SpaceObjectBase">
-    <defName>RimPlanetWilderness</defName>
-    <label>Wilderness Rim World</label>
-    <description>A small planet on the rim of the core systems</description>
+    <defName>AnimalWorld</defName>
+    <label>Animal World</label>
+    <description>Planet with no people. Either everyone died, or the planet was seeded with plant and animal life by terraforming robots and nobody arrived.</description>
     <thingClass>Building</thingClass>
 	<graphicData>
 		<drawSize>(5,5)</drawSize>
@@ -140,22 +157,29 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <Tempureture>18</Tempureture>
+	  <Rainfall>10</Rainfall>
+	  <Swampiness>0.10</Swampiness>
+	  <Elevation>1</Elevation>
+	  <Hilliness>SmallHills</Hilliness>
+	  <BiomeDefName>TemperateForest</BiomeDefName>
+      </li>
+    </comps>
   </ThingDef>
 
     <ThingDef ParentName="SpaceObjectBase">
-    <defName>RimPlanetJovial</defName>
-    <label>Jovial Rim World</label>
-    <description>A small planet on the rim of the core systems</description>
+    <defName>ToxicWorld</defName>
+    <label>Toxic World</label>
+    <description>World destroyed by pollution, chemical or nuclear warfare, but still inhabitable at a low level, with sufficient technology. Toxic may have a limited definition, or may only relate to Humans, as some toxic worlds are overgrown with hostile plant life.</description>
     <thingClass>Building</thingClass>
 	<graphicData>
 		<drawSize>(5,5)</drawSize>
@@ -171,21 +195,29 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <BiomeDefName>Desert</BiomeDefName>
+	  <Tempureture>40</Tempureture>
+	  <Rainfall>0</Rainfall>
+	  <Swampiness>0.0</Swampiness>
+	  <Elevation>1800</Elevation>
+	  <Hilliness>LargeHills</Hilliness>
+      </li>
+    </comps>
   </ThingDef>
   
       <ThingDef ParentName="SpaceObjectBase">
-    <defName>RimPlanetFrozen</defName>
-    <label>Frozen Rim World</label>
+    <defName>IceWorld</defName>
+    <label>An Ice-World</label>
     <description>A small planet on the rim of the core systems</description>
     <thingClass>Building</thingClass>
 	<graphicData>
@@ -202,16 +234,24 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(4,4)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <BiomeDefName>IceSheet</BiomeDefName>
+	  <Tempureture>-20</Tempureture>
+	  <Rainfall>10</Rainfall>
+	  <Swampiness>0.0</Swampiness>
+	  <Elevation>1</Elevation>
+	  <Hilliness>Flat</Hilliness>
+      </li>
+    </comps>
   </ThingDef>
 
 
@@ -234,16 +274,19 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(2,2)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+	  <GroundMapWorldObjectDefName>PlanetParent</GroundMapWorldObjectDefName>
+	  <BiomeDefName>Tundra</BiomeDefName>
+      </li>
+    </comps>
   </ThingDef>
 
  
@@ -251,7 +294,7 @@
   <ThingDef ParentName="SpaceObjectBase">
     <defName>RimSun</defName>
     <label>System Star</label>
-    <description>A small planet on the rim of the core systems</description>
+    <description>The star core of the system</description>
     <thingClass>Building</thingClass>
 	<graphicData>
 		<drawSize>(20,20)</drawSize>
@@ -267,97 +310,71 @@
     </graphicData>
     <tickerType>Rare</tickerType>
 	    <size>(20,20)</size>
-    <thingCategories>
-		<li>BuildingsSpecial</li>
-  </thingCategories>
     <statBases>
       <MaxHitPoints>5000000</MaxHitPoints>
       <Mass>40000</Mass>
       <Flammability>0</Flammability>
       <MarketValue>5000</MarketValue>
     </statBases>
-
-  </ThingDef>
-
-
-
-
-
-
-
-<ThingDef ParentName="BuildingBase">
-    <defName>SpaceshipLauncher</defName>
-    <label>launcher</label>
-    <description>A fueling port for launching one transport pod. Pod launchers can launch as a group - but the launchers must be placed adjacent to each other.</description>
-    <thingClass>Building_PodLauncher</thingClass>
-    <graphicData>
-      <texPath>Things/Building/Misc/PodLauncher</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(5,5)</drawSize>
-    </graphicData>
-    <drawerType>MapMeshAndRealTime</drawerType>
-    <size>(1,2)</size>
-    <rotatable>true</rotatable>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>Impassable</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>1.0</fillPercent>
-    <designationCategory>Ship</designationCategory>
-    <uiOrder>2200</uiOrder>
-    <canOverlapZones>false</canOverlapZones>
-    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <building>
-      <hasFuelingPort>true</hasFuelingPort>
-    </building>
-    <statBases>
-      <MaxHitPoints>200</MaxHitPoints>
-      <WorkToBuild>3000</WorkToBuild>
-      <Flammability>0.5</Flammability>
-    </statBases>
-    <costList>
-      <Steel>50</Steel>
-      <ComponentIndustrial>1</ComponentIndustrial>
-    </costList>
-    <comps>
-      <li Class="CompProperties_Refuelable">
-        <fuelCapacity>150.0</fuelCapacity>
-        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
-        <initialConfigurableTargetFuelLevel>75</initialConfigurableTargetFuelLevel>
-        <fuelFilter>
-          <thingDefs>
-            <li>Chemfuel</li>
-          </thingDefs>
-        </fuelFilter>
-        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <autoRefuelPercent>1</autoRefuelPercent>
-        <showFuelGizmo>true</showFuelGizmo>
-        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-        <drawFuelGaugeInMap>true</drawFuelGaugeInMap>
-        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
-    </li>
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+      </li>
     </comps>
-    <placeWorkers>
-      <li>PlaceWorker_FuelingPort</li>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>
-    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-    <researchPrerequisites>
-      <li>TransportPod</li>
-    </researchPrerequisites>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-    <uiIconScale>0.9</uiIconScale>
   </ThingDef>
   
-  <ThingDef ParentName="BuildingBase">
-    <defName>TransportSpaceship</defName>
-    <label>pod</label>
-    <description>A launchable sub-orbital cargo pod capable of carrying people, items, or animals. Can be used for sending gifts, transporting people or supplies, surprise attacks, or reinforcing battles.</description>
-    <graphicData>
-      <texPath>Things/Special/DropPod</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
+  <ThingDef ParentName="SpaceObjectBase">
+    <defName>RimWormhole</defName>
+    <label>Wormhole</label>
+    <description>A small planet on the rim of the core systems</description>
+    <thingClass>Building</thingClass>
+	<graphicData>
+		<drawSize>(5,5)</drawSize>
+		<texPath>WorldObjects/Wormhole</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shadowData>
+			<volume>(0.3, 0.6, 0.3)</volume>
+			<offset>(0,0,-0.1)</offset>
+		</shadowData>
+		<damageData>
+			<rect>(0.2,0.2,0.6,0.6)</rect>
+		</damageData>
     </graphicData>
-    <size>(1,1)</size>
+    <tickerType>Rare</tickerType>
+	    <size>(5,5)</size>
+    <statBases>
+      <MaxHitPoints>5000000</MaxHitPoints>
+      <Mass>40000</Mass>
+      <Flammability>0</Flammability>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+	<comps>
+      <li Class="RimSpace.CompProperties_Planet">
+	  
+      </li>
+    </comps>
+  </ThingDef>
+
+
+
+
+
+
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>SpaceShuttle</defName>
+    <label>Space Shuttle</label>
+    <description>A launchable orbital cargo shuttle capable of carrying people, items, or animals.</description>
+    <size>(5,3)</size>
+    <graphicData>
+      <texPath>Things/Building/Misc/Shuttle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6,3)</drawSize>
+      <color>(162,164,149)</color>
+      <shadowData>
+        <volume>(4.1, 1.0, 1.8)</volume>
+        <offset>(0, 0, -0.1)</offset>
+      </shadowData>
+    </graphicData>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
@@ -369,28 +386,29 @@
     <uiOrder>2200</uiOrder>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <statBases>
-      <MaxHitPoints>250</MaxHitPoints>
-      <WorkToBuild>1600</WorkToBuild>
+      <MaxHitPoints>1150</MaxHitPoints>
+      <WorkToBuild>3600</WorkToBuild>
       <Flammability>0.5</Flammability>
     </statBases>
     <costList>
-      <Steel>60</Steel>
-      <ComponentIndustrial>1</ComponentIndustrial>
+      <Steel>600</Steel>
+      <ComponentIndustrial>90</ComponentIndustrial>
+	  <ComponentSpacer>10</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Transporter">
         <restEffectiveness>0.8</restEffectiveness>
-		<massCapacity>5000</massCapacity>
+		<massCapacity>1000</massCapacity>
       </li>
       <li Class="RimSpace.CompProperties_LaunchShip">
-        <skyfallerLeaving>DropPodLeaving</skyfallerLeaving>
+        <skyfallerLeaving>SpaceshipLeaving</skyfallerLeaving>
       </li>
     </comps>
     <inspectorTabs>
       <li>ITab_ContentsTransporter</li>
     </inspectorTabs>
     <placeWorkers>
-      <li>PlaceWorker_NeedsFuelingPort</li>
+      <li>RimSpace.PlaceWorker_NeedsLandingZone</li>
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <researchPrerequisites>
@@ -400,6 +418,88 @@
     <uiIconScale>0.65</uiIconScale>
   </ThingDef>
 
+  <ThingDef ParentName="BuildingBase">
+    <defName>SpacePortBeacon</defName>
+    <label>spaceport beacon</label>
+    <description>Marks the corner of a Spaceport landing area. Four of these placed at the corners of a clear area (minimum 15x15) create a landing pad. Spacecraft usually land on pads if possible.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/ShipLandingBeacon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.3, 0.2, 0.3)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Mass>5</Mass>
+    </statBases>
+    <tickerType>Rare</tickerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <fillPercent>0.15</fillPercent>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>50</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+        <glowColor>(164, 255, 138, 0)</glowColor>
+      </li>
+      <li Class="RimSpace.CompProperties_SpaceportBeacon">
+        <edgeLengthRange>15~25</edgeLengthRange>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <displayNumbersBetweenSameDefDistRange>9~25</displayNumbersBetweenSameDefDistRange>
+    <pathCost>14</pathCost>
+    <designationCategory>Misc</designationCategory>
+    <uiOrder>2100</uiOrder>
+    <rotatable>false</rotatable>
+    <placeWorkers>
+      <li>PlaceWorker_ShipLandingBeacon</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+  </ThingDef>
 
 
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>SpaceshipLeaving</defName>
+    <label>space shuttle (leaving)</label>
+    <thingClass>RimSpace.SpaceshipLeaving</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Misc/Shuttle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(6,3)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(2, 2)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
 </Defs>

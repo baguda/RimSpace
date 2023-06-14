@@ -2,32 +2,8 @@
 <Defs>
 
 
-  <ThingDef ParentName="SkyfallerBase">
-    <defName>SpaceshipLeaving</defName>
-    <label>drop pod (leaving)</label>
-    <thingClass>RimSpace.SpaceshipLeaving</thingClass>
-    <graphicData>
-      <texPath>Things/Special/DropPod</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>CutoutFlying</shaderType>
-      <drawSize>1.9</drawSize>
-    </graphicData>
-    <skyfaller>
-      <movementType>Decelerate</movementType>
-      <reversed>true</reversed>
-      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
-      <shadowSize>(2, 2)</shadowSize>
-      <anticipationSound>DropPod_Leaving</anticipationSound>
-      <anticipationSoundTicks>-10</anticipationSoundTicks>
-      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
-    </skyfaller>
-  </ThingDef>
+
 	
-
-
-
-
-
   <ThingDef Name="BaseVessel" Abstract="True">
     <thingClass>Pawn</thingClass>
     <category>Pawn</category>
@@ -47,7 +23,7 @@
       <li>ITab_Pawn_Health</li>
       <li>ITab_Pawn_Needs</li>
       <li>ITab_Pawn_Character</li>
-      <li>ITab_Pawn_Training</li>
+      <!--li>ITab_Pawn_Training</li>
       <li>ITab_Pawn_Social</li>
       <li>ITab_Pawn_Guest</li>
       <li>ITab_Pawn_Prisoner</li>
@@ -55,7 +31,7 @@
       <li MayRequire="Ludeon.RimWorld.Biotech">ITab_Pawn_Feeding</li>
       <li MayRequire="Ludeon.RimWorld.Biotech">ITab_Genes</li>
       <li MayRequire="Ludeon.RimWorld.Biotech">ITab_GenesPregnancy</li>
-      <li>ITab_Pawn_FormingCaravan</li>
+      <li>ITab_Pawn_FormingCaravan</li-->
       <li>ITab_Pawn_Gear</li>
       <li>ITab_Pawn_Log</li>
 	  <li>RimSpace.ITab_ContentsCrewLarge</li>
@@ -67,8 +43,6 @@
     </comps>
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>
-
-
 
   <ThingDef ParentName="BaseVessel" Name="BaseSpaceship" Abstract="True">
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
@@ -105,20 +79,16 @@
 	  <li Class="RimSpace.CompProperties_Spacer"/>
 	  <li Class="RimSpace.CompProperties_Spaceship">
 			<ReadyTicks>60</ReadyTicks>
-			<EjectLabel>Dump it</EjectLabel>
-			<EjectDesc>Dump Crew Now</EjectDesc>
-			<CrewSize>2</CrewSize>
+			<EjectLabel>Land Now</EjectLabel>
+			<EjectDesc>Land on Nearby Planet</EjectDesc>
+			<CrewSize>5</CrewSize>
 
 	  </li>
-		<!--li Class="RimSpace.CompProperties_LaunchShip">
-		
-		<skyfallerLeaving>SpaceshipLeaving</skyfallerLeaving>
-		</li-->
       <li MayRequire="Ludeon.Rimworld.Biotech" Class="CompProperties_OverseerSubject">
         <needsOverseerEffect>MechUncontrolled</needsOverseerEffect>
-        <delayUntilFeralCheck>60000</delayUntilFeralCheck>
-        <feralMtbDays>10</feralMtbDays>
-        <feralCascadeRadialDistance>25</feralCascadeRadialDistance>
+        <delayUntilFeralCheck>600000</delayUntilFeralCheck>
+        <feralMtbDays>10000</feralMtbDays>
+        <feralCascadeRadialDistance>50</feralCascadeRadialDistance>
       </li>
     </comps>
   </ThingDef>
@@ -135,12 +105,10 @@
    <JobDef>
     <defName>EnterCrew</defName>
     <driverClass>RimSpace.JobDriver_EnterCrew</driverClass>
-    <reportString>entering cryptosleep casket.</reportString>
+    <reportString>entering space shuttle.</reportString>
     <taleOnCompletion>EnteredCryptosleep</taleOnCompletion>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
   </JobDef>
-
-
 
     <ThingDef Name="LightSpaceship" ParentName="BaseSpaceship" Abstract="True">
       <statBases>
@@ -163,7 +131,7 @@
       <butcherProducts>
         <Steel>1000</Steel>
       </butcherProducts>
-      <tools>
+      <!--tools>
         <li>
           <label>Ram</label>
           <capacities>
@@ -174,7 +142,7 @@
           <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
           <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
         </li>
-      </tools>
+      </tools-->
     </ThingDef>
 
     <PawnKindDef Name="LightSpaceshipKind" ParentName="BaseSpaceshipKind" Abstract="True">
@@ -192,15 +160,17 @@
       <isFighter>false</isFighter>
     </PawnKindDef>
 
-
-
-
-   <ThingDef ParentName="LightSpaceship">
+   
+   
+   
+   
+   
+    <ThingDef ParentName="LightSpaceship">
       <defName>AstroMech_Fighter</defName>
       <label>fighter</label>
       <description>A small mechanoid designed for hauling. Lacking a ranged weapon, it can make only weak melee attacks.</description>
       <statBases>
-        <MoveSpeed>5</MoveSpeed>
+        <MoveSpeed>1</MoveSpeed>
       </statBases>
       <race>
         <mechEnabledWorkTypes>
@@ -250,6 +220,215 @@
         </li>
       </lifeStages>
     </PawnKindDef>
+
+
+
+
+
+
+
+
+
+
+  <ThingDef Name="HeavySpaceship" ParentName="BaseSpaceship" Abstract="True">
+    <statBases>
+      <MoveSpeed>1.9</MoveSpeed>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.40</ArmorRating_Sharp>
+      <ControlTakingTime>24</ControlTakingTime>
+      <MechEnergyLossPerHP>0.2</MechEnergyLossPerHP>
+    </statBases>
+    <race>
+      <intelligence>ToolUser</intelligence>
+      <thinkTreeMain>Mechanoid</thinkTreeMain>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+      <mechWeightClass>Heavy</mechWeightClass>
+    </race>
+    <butcherProducts>
+      <Steel>20</Steel>
+      <Plasteel>10</Plasteel>
+    </butcherProducts>
+  </ThingDef>
+
+  <PawnKindDef Name="HeavySpaceshipKind" ParentName="BaseSpaceshipKind" Abstract="True">
+    <weaponMoney>9999~9999</weaponMoney>
+    <combatPower>400</combatPower>
+    <weaponTags></weaponTags>
+    <techHediffsChance>1</techHediffsChance>
+    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <controlGroupPortraitZoom>0.8</controlGroupPortraitZoom>
+  </PawnKindDef>
+
+
+  <ThingDef Abstract="True" Name="SuperHeavySpaceship" ParentName="HeavySpaceship">
+    <statBases>
+      <MarketValue>1600</MarketValue>
+      <ControlTakingTime>30</ControlTakingTime>
+      <BandwidthCost>5</BandwidthCost>
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+      <PsychicSensitivity>0.75</PsychicSensitivity>
+      <MechEnergyLossPerHP>0.15</MechEnergyLossPerHP>
+    </statBases>
+    <race>
+      <baseHealthScale>4.5</baseHealthScale>
+      <mechWeightClass>UltraHeavy</mechWeightClass>
+    </race>
+    <butcherProducts Inherit="False">
+      <Steel>50</Steel>
+      <Plasteel>20</Plasteel>
+    </butcherProducts>
+  </ThingDef>
+
+
+
+
+  <ThingDef Name="AstroMech_SpaceShuttle" ParentName="HeavySpaceship">
+    <defName>AstroMech_SpaceShuttle</defName>
+    <label>AstroMech Space Shuttle</label>
+    <description>A shuttle that is capable of space flight with an integrated AI subpersonae.</description>
+    <statBases>
+      <MoveSpeed>10.16</MoveSpeed>
+      <EnergyShieldRechargeRate>0.5</EnergyShieldRechargeRate>
+      <EnergyShieldEnergyMax>3</EnergyShieldEnergyMax>
+      <MeleeDoorDamageFactor>1.5</MeleeDoorDamageFactor>
+    </statBases>
+    <race>
+      <body>Mech_Centurion</body>
+      <baseBodySize>1.5</baseBodySize>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centurion_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centurion_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centurion_Call</soundCall>
+        </li>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>100</minAge>
+          <soundWounded>Pawn_Mech_Centurion_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centurion_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centurion_Call</soundCall>
+        </li>
+      </lifeStageAges>
+      <baseHealthScale>3</baseHealthScale>
+    </race>
+    <comps>
+      <!--li Class="CompProperties_ProjectileInterceptor">
+        <radius>6</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <color>(0.4, 0.4, 0.4)</color>
+        <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+        <activeSound>BulletShield_Ambience</activeSound>
+        <hitPoints>300</hitPoints>
+        <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+        <chargeDurationTicks>1800</chargeDurationTicks>
+        <rechargeHitPointsIntervalTicks>120</rechargeHitPointsIntervalTicks>
+        <minIdleAlpha>0.2</minIdleAlpha>
+        <drawWithNoSelection>True</drawWithNoSelection>
+        <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+        <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+      </li>
+      <li Class="CompProperties_TurretGun">
+
+        <turretDef>Gun_ChargeBlasterTurret</turretDef>
+        <angleOffset>-90</angleOffset>
+      </li-->
+	  
+	  <li Class="RimSpace.CompProperties_Spacer"/>
+    </comps>
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Demolish</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_AstroChargeBlasterTurret</defName>
+    <label>charge blaster turret</label>
+    <description>A small charge blaster designed for use on a defense turret.</description>
+    <tradeability>None</tradeability>
+    <destroyOnDrop>true</destroyOnDrop>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/ChargeBlasterTurret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>2.6</Mass>
+      <AccuracyTouch>0.60</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.90</AccuracyMedium>
+      <AccuracyLong>0.85</AccuracyLong>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_ChargeBlasterHeavy</defaultProjectile>
+        <range>44.9</range>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <defaultCooldownTime>2.5</defaultCooldownTime>
+        <linkedBodyPartsGroup>BulbTurret</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <ticksBetweenBurstShots>150</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+	<comps>
+	<li Class="RimSpace.CompProperties_Spacer"/>
+    </comps>
+  </ThingDef>
+  
+  <PawnKindDef Name="MechCenturionKind" ParentName="HeavySpaceshipKind">
+    <defName>AstroMech_SpaceShuttle</defName>
+    <label>centurion</label>
+    <race>AstroMech_SpaceShuttle</race>
+    <combatPower>250</combatPower>
+    <maxPerGroup>3</maxPerGroup>
+    <allowInMechClusters>false</allowInMechClusters>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <!--texPath>Things/Pawn/Mechanoid/Centurion</texPath-->
+		  
+          <texPath>WorldObjects/Shuttle</texPath>
+          <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Centurion</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>0.5</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <!--texPath>Things/Pawn/Mechanoid/CenturionAncient</texPath-->
+		  
+          <texPath>WorldObjects/Shuttle</texPath>
+          <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Centurion</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>0.5</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>      
+  </PawnKindDef>
 
 
 

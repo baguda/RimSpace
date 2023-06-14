@@ -219,7 +219,7 @@ namespace MapToolBag
 
             }
         }
-        public static void AdaptiveGen(Map map, IntVec3 location, string DefName, string StuffName = null, int rotNum = 0, bool eraser = false, bool isRoofed = false, bool isCleared = false)
+        /*public static void AdaptiveGen(Map map, IntVec3 location, string DefName, string StuffName = null, int rotNum = 0, bool eraser = false, bool isRoofed = false, bool isCleared = false)
         {
             if (getIfItemDrop(DefName))
             {
@@ -237,8 +237,28 @@ namespace MapToolBag
             {
                 Log.Error("DefName not matched to spawnable Item, Thing, or terrain: " + DefName.ToString());
             }
+        }*/
+        public static Thing AdaptiveGen(Map map, IntVec3 location, string DefName, string StuffName = null, int rotNum = 0, bool eraser = false, bool isRoofed = false, bool isCleared = false)
+        {
+            if (getIfItemDrop(DefName))
+            {
+               return tryGenObject(map, location, DefName, StuffName, eraser, rotNum); //PlaceThing(map, location, DefName, StuffName, rotNum);
+            }
+            else if (getIfTerrain(DefName))
+            {
+                genTerrain(location, DefName, map, isRoofed, isCleared);
+                return null;
+            }
+            else if (getIfThing(DefName))
+            {
+               return tryGenObject(map, location, DefName, StuffName, eraser, rotNum);
+            }
+            else
+            {
+                Log.Error("DefName not matched to spawnable Item, Thing, or terrain: " + DefName.ToString());
+                return null;
+            }
         }
-
         public static void AdaptiveSetGen(Map map, IntVec3 location, string DefName, string StuffDefName = null, int rotNum = 0, bool eraser = false, bool isRoofed = false, bool isCleared = false)
         {
             if (getIfItemDrop(DefName))

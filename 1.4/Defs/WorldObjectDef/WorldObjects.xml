@@ -6,7 +6,7 @@
   
   <WorldObjectDef>
     <defName>OrbitalLocation</defName>
-    <label>Space</label>
+    <label>Orbital Location</label>
     <description>A Region of Space</description>
     <worldObjectClass>RimSpace.WorldObject_Orbital</worldObjectClass>
     <texture>WorldObjects/SpaceRegion</texture>
@@ -20,16 +20,90 @@
     </comps>
   </WorldObjectDef>
   
+   <WorldObjectDef>
+    <defName>LagrangePoint</defName>
+    <label>Lagrange Point</label>
+    <description>A Region of Space</description>
+    <worldObjectClass>RimSpace.WorldObject_Orbital</worldObjectClass>
+    <texture>WorldObjects/SpaceRegion</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>WorldObjects/SpaceRegion</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+	<mapGenerator>SpaceMapGen</mapGenerator>
+    <comps>
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_TimedDetectionRaids" />
+    </comps>
+  </WorldObjectDef>
+  
+  <WorldObjectDef>
+    <defName>PlanetParent</defName>
+    <label>Planet Parent</label>
+    <description>A Region of Space</description>
+    <worldObjectClass>RimSpace.WorldObject_HiddenPlanet</worldObjectClass>
+    <texture>WorldObjects/SpaceRegion</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>WorldObjects/SpaceRegion</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+	<!--mapGenerator>SpaceMapGen</mapGenerator-->
+    <comps>
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_TimedDetectionRaids" />
+    </comps>
+  </WorldObjectDef>
+  
+    <WorldObjectDef>
+    <defName>Wormhole</defName>
+    <label>Artificial Wormhole</label>
+    <description>A folded region of spacetime.</description>
+    <worldObjectClass>RimSpace.WorldObject_Wormhole</worldObjectClass>
+    <texture>WorldObjects/Wormhole</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>WorldObjects/Wormhole</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+	<mapGenerator>SpaceMapGen</mapGenerator>
+    <comps>
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_TimedDetectionRaids" />
+    </comps>
+  </WorldObjectDef>
+  
+    <WorldObjectDef>
+    <defName>SpaceStation</defName>
+    <label>Space Station</label>
+    <description>A Space Station capable of building AstroNech Spaceships</description>
+    <worldObjectClass>RimSpace.WorldObject_SpaceStation</worldObjectClass>
+    <texture>WorldObjects/SpaceStation</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>WorldObjects/SpaceStation</expandingIconTexture>
+    <expandingIconPriority>20</expandingIconPriority>
+	<mapGenerator>SpaceMapGen</mapGenerator>
+	    <inspectorTabs>
+		<li>WITab_Caravan_Items</li>
+      
+      <!--li>WITab_Caravan_Needs</li>
+      <li>WITab_Caravan_Gear</li>
+      <li>WITab_Caravan_Social</li>
+      <li>WITab_Caravan_Health</li>
+      <li>WITab_Caravan_Feeding</li-->
+    </inspectorTabs>
+    <comps>
+	
+      <li Class="WorldObjectCompProperties_FormCaravan" />
+      <li Class="WorldObjectCompProperties_TimedDetectionRaids" />
+    </comps>
+  </WorldObjectDef>
+  
 
   <WorldObjectDef>
     <defName>TravelingSpaceShip</defName>
     <label>Space ship</label>
     <description>Spaceship in flight.</description>
-    <worldObjectClass>RimSpace.WorldObject_Vessel</worldObjectClass>
-    <texture>World/WorldObjects/TravelingTransportPods</texture>
+    <worldObjectClass>RimSpace.WorldObject_SpaceShuttle</worldObjectClass>
+    <texture>WorldObjects/Shuttle</texture>
     <useDynamicDrawer>true</useDynamicDrawer>
     <expandingIcon>true</expandingIcon>
-    <expandingIconTexture>World/WorldObjects/Expanding/TravelingTransportPods</expandingIconTexture>
+    <expandingIconTexture>WorldObjects/Shuttle</expandingIconTexture>
     <expandingIconPriority>60</expandingIconPriority>
     <expandMore>true</expandMore>
     <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>

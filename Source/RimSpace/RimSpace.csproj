@@ -36,6 +36,11 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MapToolBag, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\1.4\Assemblies\MapToolBag.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
@@ -55,21 +60,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITab_.cs" />
-    <Compile Include="CompProperties_Spaceship.cs" />
-    <Compile Include="CompProperties_Vessel.cs" />
-    <Compile Include="CompSpaceship.cs" />
-    <Compile Include="Gizmo_SpaceshipReadout.cs" />
+    <Compile Include="CompSpaceportBeacon.cs" />
+    <Compile Include="Dialog_ReadyStationShuttle.cs" />
+    <Compile Include="PlaceWorker_NeedsLandingZone.cs" />
+    <Compile Include="SpaceshipLandingArea.cs" />
+    <Compile Include="Space\CompPlanet.cs" />
+    <Compile Include="Space\CompProperties_Planet.cs" />
+    <Compile Include="Spaceship\CompProperties_Trader.cs" />
+    <Compile Include="Station\StationProjectDef.cs" />
+    <Compile Include="Spaceship\ITab_.cs" />
+    <Compile Include="Spaceship\CompProperties_Spaceship.cs" />
+    <Compile Include="Spaceship\CompProperties_Vessel.cs" />
+    <Compile Include="Spaceship\CompSpaceship.cs" />
+    <Compile Include="Spaceship\Gizmo_SpaceshipReadout.cs" />
     <Compile Include="Ground\CompLaunchShip.cs" />
     <Compile Include="Ground\CompProperties_LaunchShip.cs" />
-    <Compile Include="CompVessel.cs" />
+    <Compile Include="Spaceship\CompVessel.cs" />
     <Compile Include="Ground\SpaceshipLeaving.cs" />
-    <Compile Include="JobDriver_EnterCrew.cs" />
+    <Compile Include="Spaceship\JobDriver_EnterCrew.cs" />
     <Compile Include="Managers\Manager.cs" />
     <Compile Include="Managers\Manager_Energy.cs" />
     <Compile Include="Managers\Manager_LifeSupport.cs" />
     <Compile Include="Managers\Manager_Shields.cs" />
-    <Compile Include="Need_Shields.cs" />
     <Compile Include="Space\BiomeWorker_Space.cs" />
     <Compile Include="Space\CompProperties_Spacer.cs" />
     <Compile Include="Space\CompSpacer.cs" />
@@ -79,17 +91,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mod\RimSpace.cs" />
     <Compile Include="Space\StarSystemDef.cs" />
-    <Compile Include="ToolBagUDA\CellSets.cs" />
-    <Compile Include="ToolBagUDA\DialogWorkerUtility.cs" />
-    <Compile Include="ToolBagUDA\Gamecomp_CloudStorage.cs" />
-    <Compile Include="ToolBagUDA\IntVecShape.cs" />
-    <Compile Include="ToolBagUDA\MapHandlerUtility.cs" />
-    <Compile Include="ToolBagUDA\MapMaker.cs" />
-    <Compile Include="ToolBagUDA\MapWorkerUtility.cs" />
-    <Compile Include="ToolBagUDA\TileHandlerUtility.cs" />
     <Compile Include="Space\WorldObject_Orbital.cs" />
     <Compile Include="Ground\WorldObject_Vessel.cs" />
+    <Compile Include="Spaceship\CompTrader.cs" />
+    <Compile Include="Station\WorldObject_SpaceStation.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ToolBagUDA\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

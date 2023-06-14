@@ -15,7 +15,7 @@ namespace RimSpace
 
 		public float[] thrsh = { 0.5f, 0.25f, 0.1f, 0.0f };
 		public CompSpaceship comp => this.pawn.GetComp<CompSpaceship>();
-		public Manager_Shields manager => comp.managers.Find(f => f.MgrType == ManagerType.Shields) as Manager_Shields;
+		public Manager_Shields manager => comp.shields;
 		public override float MaxLevel => 1f;
 		public override bool ShowOnNeedList => manager.CanHaveShields;
 		public override float CurInstantLevel => base.CurInstantLevel;

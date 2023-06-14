@@ -10,18 +10,39 @@ namespace RimSpace
 		public Map map => Vessel.Map;
 		public CompSpaceship comp => Vessel.GetComp<CompSpaceship>();
 		public List<Pawn> Crew => comp.CrewList;
+		public float[] thrsh = { 0.5f, 0.25f, 0.1f, 0.0f };
 
 
-		private int NextTick = 0;
-		public int TickPeriod = 300;
 		public ManagerType MgrType;
 
-		private float AmountInt = 0f;
+		private float AmountInt = 50f;
 		public float maxAmount = 100;
 		public bool depleted => this.AmountInt == 0f;
 		public float curAmount { get => this.AmountInt; set => this.AmountInt = value; }
 		public float Level => curAmount / maxAmount;
-
+		public SystemStatus status
+        {
+			get
+			{
+				if (this.Level == thrsh[3])
+				{
+					return SystemStatus.Down;
+				}
+				if (this.Level < thrsh[2])
+				{
+					return SystemStatus.Critcal;
+				}
+				if (this.Level < thrsh[1])
+				{
+					return SystemStatus.Strained;
+				}
+				if (this.Level < thrsh[0])
+				{
+					return SystemStatus.Stressed;
+				}
+				return SystemStatus.Holding;
+			}
+		}
 
 		
 
@@ -37,7 +58,7 @@ namespace RimSpace
 		}
 		public virtual void ManagerTick()
 		{
-			if (TimedTick()) ManagerTimedTick();
+
 		}
 		public virtual void ExposeData()
         {
@@ -66,25 +87,39 @@ namespace RimSpace
 			curAmount = result;
 			return 0f;
 		}
-
-		private bool TimedTick()
-		{
-			if (Find.TickManager.TicksGame >= NextTick)
-			{
-				NextTick = Find.TickManager.TicksGame + this.TickPeriod;
-				return true;
+		public virtual string ToPrint()
+        {
+			string result = "";
+			return result;
+        }
+		
+		public virtual string statusString
+        {
+            get
+            {
+				if (status.Equals(SystemStatus.Holding)) return "Holding";
+				if (status.Equals(SystemStatus.Stressed)) return "Stressed";
+				if (status.Equals(SystemStatus.Strained)) return "Strained";
+				if (status.Equals(SystemStatus.Critcal)) return "Critcal";
+				 return "Down";
 			}
-			return false;
-		}
+        }
 
 	}
-	public enum ManagerType
+	public enum ManagerType 
 	{
 		LifeSupport,
 		Energy,
 		Shields,
 	}
-
+	public enum SystemStatus : byte
+	{
+		Holding = 0,
+		Stressed = 1,
+		Strained = 2,
+		Critcal = 3,
+		Down = 4
+	}
 	public class Manager_ : Manager
 	{
 		public Manager_ (Pawn vessel) : base(vessel)

@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+
+
   <RimSpace.StarSystemDef>
     <defName>SystemCore</defName>
-    <label>orbital core</label>
+    <label>System core</label>
     <description>Open space. Not so great for you.</description>
+	
 	<SpaceObjectDefNames>
 	<li>RimPlanetHome</li>
-	<li>RimPlanetLush</li>
-	<li>RimPlanetFirtile</li>
-	<li>RimPlanetWilderness</li>
-	<li>RimPlanetJovial</li>
-	<li>RimPlanetFrozen</li>
+	<li>AnimalWorld</li>
+	<li>MidWorld</li>
+	<li>IceWorld</li>
 	</SpaceObjectDefNames>
+	
   </RimSpace.StarSystemDef>
   
   
+  
+  
+   <RimSpace.StationProjectDef>
+    <defName>StationConstruction</defName>
+    <label>Station Construction</label>
+    <description>Station Construction.</description>
+    <MaxLaborRatePerTick>1.5</MaxLaborRatePerTick>
+    <MaxWorkers>100</MaxWorkers>
+    <Repeatable>true</Repeatable>	
+    <TotalLabor>216000</TotalLabor>
+	<costList>
+		<Steel>10000</Steel>
+		<WoodLog>10000</WoodLog>
+	</costList>
+  </RimSpace.StationProjectDef>
+  
+
 </Defs>
 	

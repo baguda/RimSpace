@@ -17,10 +17,10 @@ namespace RimSpace
 		public int ReadyTicks = 300;
 		public int getReadyTime => ReadyTicks;
 
-		public string EjectLabel = "Elect";
+		public string EjectLabel = "Land on Planet";
 		public string getEjectLabel => EjectLabel;
 
-		public string EjectDesc = "Eject Crew";
+		public string EjectDesc = "Have the ship land on the nearby planet.";
 		public string getEjectDesc => EjectDesc;
 	}
 

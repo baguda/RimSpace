@@ -12,8 +12,8 @@ namespace RimSpace
 		public ThingOwner innerContainer;
 		protected bool contentsKnown;
 		public string openedSignal;
-		public List<Manager> managers = new List<Manager>();
-		public Manager GetManager(ManagerType type) => this.managers.Find(s => s.MgrType == type);
+		//public List<Manager> managers = new List<Manager>();
+		//public Manager GetManager(ManagerType type) => this.managers.Find(s => s.MgrType == type);
 
 		public Pawn pawn => this.parent as Pawn;
 		public Map map => this.pawn.Map;

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+
+using System.Linq;
 using Verse;
 using RimWorld;
 using UnityEngine;
@@ -40,6 +42,7 @@ namespace RimSpace
 
     public class ITab_ContentsCrewLarge : ITab_ContentsBase
     {
+        public List<Contents> data = new List<Contents>();
         private List<Thing> listInt = new List<Thing>();
         public CompSpaceship comp => (this.SelObject as Pawn).GetComp<CompSpaceship>();
         public override IList<Thing> container
@@ -56,32 +59,30 @@ namespace RimSpace
             }
         }
         public override bool UseDiscardMessage => false;
-        //public CompTransporter Transporter => base.SelThing.TryGetComp<CompTransporter>();
+        //public CompSpaceship Transporter => base.SelThing.TryGetComp<CompSpaceship>();
         public override bool IsVisible => (base.SelThing.Faction == null || base.SelThing.Faction == Faction.OfPlayer)/* && this.SelPawn.GetComp<Comp_CrewHolder>().hasContents */;
         public override IntVec3 DropOffset => base.DropOffset;
         public ITab_ContentsCrewLarge()
         {
             this.labelKey = "Crew";
             this.containedItemsKey = "ContainedItems";
+
         }
         protected override void DoItemsLists(Rect inRect, ref float curY)
         {
             float a = 0f;
-
-            CompSpaceship holder = base.SelPawn.GetComp<CompSpaceship>();
             Rect rect = new Rect(0f, curY, (inRect.width - 10f) / 1f, inRect.height);
             Text.Font = GameFont.Small;
             bool flag = false;
-
             Widgets.BeginGroup(rect);
-            string Status = "Crew: " + comp.Count.ToString() + "/" + this.comp.Props.getCrewSize.ToString() +
-                " : Medical Level: " + ((comp.managers.Find(m => m.MgrType == ManagerType.LifeSupport) as Manager_LifeSupport).CrewMedicalLevel * 100f).ToString() + "% | Captain: " +
-                this.comp.overseer.Name.ToStringShort;
+            string Status = "Crew: " + comp.CrewList.Count.ToString() + "/" + this.comp.Props.getCrewSize.ToString();// +
+               // " : Medical Level: " + ((comp.managers.Find(m => m.MgrType == ManagerType.LifeSupport) as Manager_LifeSupport).CrewMedicalLevel * 100f).ToString() + "% | Captain: " +
+               // this.comp.overseer.Name.ToStringShort;
 
             Widgets.ListSeparator(ref a, rect.width, Status);
-            if (holder.hasContents)
+            if (comp.hasContents)
             {
-                foreach (Pawn pawn in holder.CrewList)
+                foreach (Pawn pawn in comp.CrewList)
                 {
                     TransferableOneWay t = new TransferableOneWay();
                     t.things = new List<Thing>();
@@ -89,18 +90,28 @@ namespace RimSpace
                     flag = true;
                     base.DoThingRow(base.SelPawn.def, 1, t.things, rect.width, ref a, delegate (int x)
                     {
-                        this.OnDropToLoadThing(t, x);
+                        
+                        //this.OnDropToLoadThing(t, x);
                     });
                 }
+
+                foreach (Thing item in comp.ContentsList.Where(s => !(s is Pawn)))
+                {
+                    TransferableOneWay t = new TransferableOneWay();
+                    t.things = new List<Thing>() ;
+                    t.things.Add(item);
+                    base.DoThingRow(item.def, item.stackCount , t.things, rect.width, ref a, delegate (int x)
+                    {
+                       // this.comp.lifeSupport.processThing(t);
+                    });
+                }
+
             }
             if (!flag)
             {
                 Widgets.NoneLabel(ref a, rect.width, null);
             }
             Widgets.EndGroup();
-
-
-
 
             Rect inRect2 = new Rect(0f, curY, (inRect.width - 10f) / 1f, inRect.height);
             float b = 0f;
@@ -112,6 +123,8 @@ namespace RimSpace
 
             //base.DoItemsLists(inRect2, ref b);
             curY += Mathf.Max(a, b);
+
+            
         }
         protected override void OnDropThing(Thing t, int count)
         {
@@ -161,7 +174,27 @@ namespace RimSpace
     }
 
 
+    public struct Contents
+    {
+        public string defName;
 
+        public List<Thing> things;
+
+        public Contents(Thing item)
+        {
+            this.defName = item.def.defName;
+            this.things = new List<Thing>() { item };
+
+        }
+        public void addOne(Thing item)
+        {
+            this.things.Add(item);
+        }
+
+        public ThingDef thingDef => DefDatabase<ThingDef>.GetNamed(this.defName);
+        public string ToPrint => this.defName + ": x" + count.ToString();
+        public int count => things.Count();
+    }
 
 
 
@@ -353,4 +386,103 @@ namespace RimSpace
     Text.Anchor = TextAnchor.UpperLeft;
 
     */
+}
+
+
+namespace RimSpace
+{
+    public class ITab_ContentsTransporter : ITab_ContentsBase
+    {
+        public override IList<Thing> container => this.Transporter.innerContainer;
+
+        public override bool UseDiscardMessage => false;
+        public CompSpaceship Transporter => base.SelThing.TryGetComp<CompSpaceship>();
+        public override bool IsVisible => (base.SelThing.Faction == null || base.SelThing.Faction == Faction.OfPlayer) 
+            && this.Transporter != null &&  this.Transporter.innerContainer.Any;
+        public override IntVec3 DropOffset => ShipJob_Unload.DropoffSpotOffset;
+        public ITab_ContentsTransporter()
+        {
+            this.labelKey = "TabTransporterContents";
+            this.containedItemsKey = "ContainedItems";
+        }
+        protected override void DoItemsLists(Rect inRect, ref float curY)
+        {
+            CompSpaceship transporter = this.Transporter;
+            Rect rect = new Rect(0f, curY, (inRect.width - 10f) / 2f, inRect.height);
+            Text.Font = GameFont.Small;
+            bool flag = false;
+            float a = 0f;
+            Widgets.BeginGroup(rect);
+            Widgets.ListSeparator(ref a, rect.width, "Crew".Translate());
+
+                for (int i = 0; i < transporter.CrewList.Count; i++)
+                {
+                TransferableOneWay t = new TransferableOneWay(); //transporter.leftToLoad[i];
+                t.things.Add(transporter.CrewList[i]);
+                    if (t.CountToTransfer > 0 && t.HasAnyThing)
+                    {
+                        flag = true;
+                        base.DoThingRow(t.ThingDef, t.CountToTransfer, t.things, rect.width, ref a, delegate (int x)
+                        {
+                            this.OnDropToLoadThing(t, x);
+                        });
+                    }
+                }
+            
+            if (!flag)
+            {
+                Widgets.NoneLabel(ref a, rect.width, null);
+            }
+            Widgets.EndGroup();
+            Rect inRect2 = new Rect((inRect.width + 10f) / 2f, curY, (inRect.width - 10f) / 2f, inRect.height);
+            float b = 0f;
+            base.DoItemsLists(inRect2, ref b);
+            curY += Mathf.Max(a, b);
+        }
+        protected override void OnDropThing(Thing t, int count)
+        {
+            base.OnDropThing(t, count);
+            Pawn pawn;
+            if ((pawn = (t as Pawn)) != null)
+            {
+                this.RemovePawnFromLoadLord(pawn);
+            }
+        }
+        private void RemovePawnFromLoadLord(Pawn pawn)
+        {
+            Lord lord = pawn.GetLord();
+            if (lord != null && lord.LordJob is LordJob_LoadAndEnterTransporters)
+            {
+                lord.Notify_PawnLost(pawn, PawnLostCondition.LeftVoluntarily, null);
+            }
+        }
+        private void OnDropToLoadThing(TransferableOneWay t, int count)
+        {
+            t.ForceTo(t.CountToTransfer - count);
+            this.EndJobForEveryoneHauling(t);
+            foreach (Thing thing in t.things)
+            {
+                Pawn pawn = thing as Pawn;
+                if (pawn != null)
+                {
+                    this.RemovePawnFromLoadLord(pawn);
+                }
+            }
+        }
+        private void EndJobForEveryoneHauling(TransferableOneWay t)
+        {
+            List<Pawn> allPawnsSpawned = base.SelThing.Map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < allPawnsSpawned.Count; i++)
+            {
+                if (allPawnsSpawned[i].CurJobDef == JobDefOf.HaulToTransporter)
+                {
+                    JobDriver_HaulToTransporter jobDriver_HaulToTransporter = (JobDriver_HaulToTransporter)allPawnsSpawned[i].jobs.curDriver;
+                    //if (jobDriver_HaulToTransporter.Transporter == this.Transporter && jobDriver_HaulToTransporter.ThingToCarry != null && jobDriver_HaulToTransporter.ThingToCarry.def == t.ThingDef)
+                    {
+                        allPawnsSpawned[i].jobs.EndCurrentJob(JobCondition.InterruptForced, true, true);
+                    }
+                }
+            }
+        }
+    }
 }

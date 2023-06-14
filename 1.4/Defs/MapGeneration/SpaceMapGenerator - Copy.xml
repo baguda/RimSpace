@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>Base_Planet</defName>
+    <genSteps>
+      <li>RocksFromGrid</li>
+      <li>PlanetSettlement</li>
+      <li>SettlementPower</li>
+    </genSteps>
+  </MapGeneratorDef>
+  
+  <!-- Generate faction base -->
+  <GenStepDef>
+    <defName>PlanetSettlement</defName>
+    <order>400</order>
+    <genStep Class="RimSpace.GenStep_PlanetSettlement">
+      <count>1</count>
+      <nearMapCenter>true</nearMapCenter>
+    </genStep>
+  </GenStepDef>
+
+  <!-- Spawn power conduits -->
+  <GenStepDef>
+    <defName>SettlementPower</defName>
+    <order>401</order>
+    <genStep Class="GenStep_Power" />
+  </GenStepDef>
+  
+</Defs>

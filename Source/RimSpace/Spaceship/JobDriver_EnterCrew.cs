@@ -38,8 +38,8 @@ namespace RimSpace
 				};
 				//if (pod.def.building.isPlayerEjectable)
 				{
-					action();
-					return;
+					//action();
+					//return;
 				}
 				if (this.Map.mapPawns.FreeColonistsSpawnedOrInPlayerEjectablePodsCount <= 1)
 				{

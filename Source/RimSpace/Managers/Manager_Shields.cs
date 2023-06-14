@@ -12,15 +12,10 @@ namespace RimSpace
 		public int lastDamageTick = -999;
  
 
-		public float maxFuel => base.maxAmount;
-		public float fuelLevel => base.Level;
-		public float fuel { get => base.curAmount; set => base.curAmount = value; }
-
-
+		public float maxShield => base.maxAmount;
+		public float ShieldLevel => base.Level;
+		public float Shield { get => base.curAmount; set => base.curAmount = value; }
 		public bool Charging => Find.TickManager.TicksGame > this.lastDamageTick + 120;
-
-
-
 		public Manager_Shields(Pawn vessel) : base(vessel)
 		{
 		}
